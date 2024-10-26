@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolsHub API Tools - Task & API Key Generation</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #e6f7ff; padding: 20px; }
+    .container { max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); }
+    .form-group { margin-bottom: 20px; }
+    label { font-weight: bold; }
+    input[type="text"] { width: 100%; padding: 8px; margin-top: 5px; border-radius: 5px; border: 1px solid #ddd; }
+    .btn { width: 100%; padding: 10px; background-color: #007bff; color: white; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; }
+    .btn:hover { background-color: #0056b3; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>API Tools Task Selection</h2>
+    <form>
+      <div class="form-group">
+        <label for="task">Enter Task</label>
+        <input type="text" id="task" placeholder="Enter task (e.g., bad review removal)">
+      </div>
+      <div class="form-group">
+        <label for="platform">Search or Enter Review/Listing Platform</label>
+        <input type="text" id="platform" placeholder="Enter any platform (e.g., Google, Yelp)">
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn" onclick="generateApiKey()">Generate API Key</button>
+        <input type="text" id="apiKey" readonly placeholder="API Key will appear here">
+      </div>
+      <button type="button" class="btn" onclick="redirectToHistory()">View Work History</button>
+    </form>
+  </div>
+
+  <script>
+    function generateApiKey() {
+      const apiKey = Math.random().toString(36).substr(2, 10).toUpperCase();
+      document.getElementById("apiKey").value = apiKey;
+      alert("API Key generated: " + apiKey);
+      localStorage.setItem("apiKeyHistory", apiKey);
+    }
+    
+    function redirectToHistory() {
+      window.location.href = "historyPage.html";
+    }
+  </script>
+</body>
+</html>
